@@ -58,7 +58,12 @@ function loginCheck(){
     //If no user/pass combo is found, redirect to failed login page
     if(loginsuccess == 0){
         sessionStorage["loggeduser"] = '';
-        window.location.href ="./badlogin.html";
+        //window.location.href ="./badlogin.html";
+
+        //Blank user/Pass
+        //Display user/pass not found with alert roll
+        document.getElementsByClassName("usermissmatch")[0].style.visibility = "visible";
+        document.getElementsByClassName("usermissmatch")[0].setAttribute("role", "alert");
     }
 
 }
