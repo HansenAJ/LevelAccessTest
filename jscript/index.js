@@ -69,9 +69,11 @@ function passValidate(){
 
     if(pass==passval){
        document.getElementsByClassName("passverify")[0].style.visibility = "hidden";
+       document.getElementsByClassName("passverify")[0].removeAttribute("role", "alert");
        document.getElementsByClassName("account_btn")[0].disabled = false;
     }else{
         document.getElementsByClassName("passverify")[0].style.visibility = "visible";
+        document.getElementsByClassName("passverify")[0].setAttribute("role", "alert");
         document.getElementsByClassName("account_btn")[0].disabled = true;
     }
 
