@@ -26,6 +26,12 @@ if(document.getElementsByClassName("userinfo")[0] != null){
 }
 if(document.getElementsByClassName("account_btn")[0] != null){
     document.getElementsByClassName("account_btn")[0].addEventListener("click", accountCreate);
+    //Adds check on key change to validate field for button change
+    document.getElementsByClassName("user_input")[0].addEventListener("keyup", checkValid);
+    document.getElementsByClassName("pass_input")[0].addEventListener("keyup", checkValid);
+    document.getElementsByClassName("passval_input")[0].addEventListener("keyup", checkValid);
+    document.getElementsByClassName("name_input")[0].addEventListener("keyup", checkValid);
+    document.getElementsByClassName("email_input")[0].addEventListener("keyup", checkValid);
 }
 if(document.getElementsByClassName("home_btn")[0] != null){
     document.getElementsByClassName("home_btn")[0].addEventListener("click", signOut);
@@ -75,11 +81,13 @@ function passValidate(){
     if(pass==passval){
        document.getElementsByClassName("passverify")[0].style.visibility = "hidden";
        document.getElementsByClassName("passverify")[0].removeAttribute("role", "alert");
-       document.getElementsByClassName("account_btn")[0].disabled = false;
+      // document.getElementsByClassName("account_btn")[0].disabled = false;
+      // document.getElementsByClassName("btn_disable")[0].classList.remove("btn_disable")
     }else{
         document.getElementsByClassName("passverify")[0].style.visibility = "visible";
         document.getElementsByClassName("passverify")[0].setAttribute("role", "alert");
-        document.getElementsByClassName("account_btn")[0].disabled = true;
+      //  document.getElementsByClassName("account_btn")[0].disabled = true;
+      //  document.getElementsByClassName("btn_disable")[0].classList.add("btn_disable")
     }
 
 }
@@ -112,4 +120,21 @@ function acc_rdr(){
 //Function to do a dummy sign-out and return to fresh login page
 function signOut(){
     window.location.href ="./index.html";
+}
+//Checks validity of form on each input to visually and programatically enable/disable account create button
+function checkValid(){
+    let user = document.getElementsByClassName("user_input")[0].checkValidity();
+    let pass = document.getElementsByClassName("pass_input")[0].checkValidity();
+    let passval = document.getElementsByClassName("passval_input")[0].checkValidity();
+    let name = document.getElementsByClassName("name_input")[0].checkValidity();
+    let email = document.getElementsByClassName("email_input")[0].checkValidity();
+
+    if(user&&pass&&passval&&name&&email){
+        document.getElementsByClassName("account_btn")[0].disabled = false;
+        document.getElementsByClassName("account_btn")[0].classList.remove("btn_disable")
+    }else{
+        document.getElementsByClassName("account_btn")[0].disabled = true;
+        document.getElementsByClassName("account_btn")[0].classList.add("btn_disable")
+    }
+
 }

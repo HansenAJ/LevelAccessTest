@@ -16,12 +16,12 @@ body{
 
 .passverify{
     visibility: hidden;
-    color: red;
+    color: #EF0000;
 }
 
 .usermissmatch{
     visibility: hidden;
-    color: red;
+    color: #EF0000;
 }
 .login_page{
     display: flex;
@@ -35,6 +35,8 @@ button, .account_btn{
     font-size: 18px;
     margin: 5px;
     transition: transform .3s;
+    cursor: pointer;
+    color: black;
 }
 /* Enlarges buttons when hovered */
 .btn_zoom:hover{
@@ -48,4 +50,11 @@ input{
 }
 div{
     padding: 5px;
+}
+
+.btn_disable{
+    /* opacity: .5; */
+    background-color: #808080;
+    color:#000000;
+    cursor: pointer;
 }
